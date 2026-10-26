@@ -1,0 +1,3 @@
+OJTTrack project package. See README.md for setup.
+Database is created automatically in instance/ojttrack.sqlite3.
+Development sample credentials are created only after running seed_db.py.

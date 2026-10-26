@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Access denied · OJTTrack{% endblock %}
+{% block content %}<div class="empty-state"><div class="empty-icon">🔒</div><h1>Access restricted</h1><p>Your account does not have permission to view this page.</p><a class="btn btn-primary" href="{{ url_for('auth.index') }}">Return to dashboard</a></div>{% endblock %}

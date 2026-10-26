@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Register' if register_mode else 'Login' }} · OJTTrack{% endblock %}
+{% block auth_content %}
+<div class="auth-page"><div class="auth-art"><div class="auth-logo"><span class="brand-mark">O</span> OJTTrack</div><div class="art-orb orb-one"></div><div class="art-orb orb-two"></div><div class="art-copy"><span class="pill">YOUR OJT, ORGANIZED</span><h1>Every OJT hour, on record.</h1><p>Log your attendance and daily tasks, watch your hours add up, and let your coordinator verify them in one place.</p><div class="art-stat"><span>✦</span><div><strong>Track your journey</strong><small>Hours · Activities · Progress</small></div></div></div></div>
+<div class="auth-panel"><div class="auth-card"><span class="eyebrow">BAGO CITY COLLEGE</span><h2>{{ 'Create your account' if register_mode else 'Welcome back' }}</h2><p class="muted">{{ 'Register as an OJT student.' if register_mode else 'Sign in to continue to your OJT workspace.' }}</p>
+<form method="post" class="form-stack"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{% if register_mode %}
+<label>Full name<input name="full_name" required autocomplete="name"></label>
+<label>Student number<input name="student_number" required></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+{% endif %}
+<label>Username<input name="username" required autocomplete="username"></label>
+{% if not register_mode %}{% endif %}
+<label>Password<input type="password" name="password" required minlength="{{ 8 if register_mode else 1 }}" autocomplete="{{ 'new-password' if register_mode else 'current-password' }}"></label>
+<button class="btn btn-primary btn-wide" type="submit">{{ 'Create account' if register_mode else 'Sign in' }} <span>→</span></button></form>
+<p class="auth-switch">{% if register_mode %}Already registered? <a href="{{ url_for('auth.login') }}">Sign in</a>{% else %}New OJT student? <a href="{{ url_for('auth.register') }}">Create an account</a>{% endif %}</p>
+<div class="auth-note">For GPS attendance, allow location access when your browser asks. Location accuracy depends on your device and surroundings.</div></div><div class="auth-footer">© 2026 OJTTrack · Student training made organized</div></div></div>
+{% endblock %}

@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}Server error{% endblock %}{% block content %}<div class="empty-state"><h1>Something went wrong</h1><p>Please try again. If the issue continues, contact the administrator.</p><a class="btn btn-primary" href="{{ url_for('auth.index') }}">Return</a></div>{% endblock %}
